@@ -28,4 +28,4 @@ dataSourceFactory:
   url: jdbc:mysql://hive-metastore.c3fdiq8snpad.us-west-2.rds.amazonaws.com:3306/airpal
 
 # The URL to the Presto coordinator.
-prestoCoordinator: http://localhost
+prestoCoordinator: http://localhost:8080
