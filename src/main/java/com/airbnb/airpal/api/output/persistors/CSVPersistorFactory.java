@@ -5,8 +5,10 @@ import com.airbnb.airpal.api.output.PersistentJobOutput;
 import com.airbnb.airpal.core.store.files.ExpiringFileStore;
 import com.amazonaws.services.s3.AmazonS3;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @AllArgsConstructor
+@Slf4j
 public class CSVPersistorFactory
 {
     private boolean useS3Persistor = false;
@@ -17,7 +19,7 @@ public class CSVPersistorFactory
     public Persistor getPersistor(Job job, PersistentJobOutput jobOutput)
     {
         // TODO: Support variable CSV persistor.
-        if (useS3Persistor) {
+        if (!s3Bucket.equals("")) { // Changed to always use S3 Persistor
             return new S3FilePersistor(s3Client, s3Bucket, 0L);
         } else {
             return new FlatFilePersistor(expiringFileStore);
