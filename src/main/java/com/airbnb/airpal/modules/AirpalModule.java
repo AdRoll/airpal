@@ -267,8 +267,6 @@ public class AirpalModule extends AbstractModule
     @Provides
     public AmazonS3 provideAmazonS3Client(AWSCredentials awsCredentials)
     {
-        awsCredentials = provideAWSCredentials();
-
         if (awsCredentials == null) {
             return new AmazonS3Client();
         }
