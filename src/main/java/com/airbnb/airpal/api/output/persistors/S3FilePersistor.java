@@ -11,6 +11,7 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.google.common.net.MediaType;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.ws.rs.core.UriBuilder;
 import java.io.File;
@@ -19,6 +20,7 @@ import java.net.URI;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 @RequiredArgsConstructor
+@Slf4j
 public class S3FilePersistor
         implements Persistor
 {
@@ -35,7 +37,7 @@ public class S3FilePersistor
 
     private String getOutputKey(String fileBaseName)
     {
-        return "airpal/" + fileBaseName;
+        return "presto/airpal/tmp/" + fileBaseName;
     }
 
     @Override
