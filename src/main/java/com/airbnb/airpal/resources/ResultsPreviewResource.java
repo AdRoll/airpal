@@ -65,7 +65,7 @@ public class ResultsPreviewResource
 
     private String getOutputKey(String fileBaseName)
     {
-        return "presto/airpal/csv/" + fileBaseName;
+        return "presto/airpal/tmp/" + fileBaseName;
     }
 
     private String getFilename(URI fileURI)

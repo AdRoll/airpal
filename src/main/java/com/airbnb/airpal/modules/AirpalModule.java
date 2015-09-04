@@ -260,16 +260,14 @@ public class AirpalModule extends AbstractModule
     @Provides
     public AWSCredentials provideAWSCredentials()
     {
-        DefaultAWSCredentialsProviderChain AWSCPC = new DefaultAWSCredentialsProviderChain();
-        return AWSCPC.getCredentials();
+        return new DefaultAWSCredentialsProviderChain().getCredentials();
     }
 
     @Singleton
     @Provides
     public AmazonS3 provideAmazonS3Client(AWSCredentials awsCredentials)
     {
-        DefaultAWSCredentialsProviderChain AWSCPC = new DefaultAWSCredentialsProviderChain();
-        awsCredentials = AWSCPC.getCredentials();
+        awsCredentials = provideAWSCredentials();
 
         if (awsCredentials == null) {
             return new AmazonS3Client();

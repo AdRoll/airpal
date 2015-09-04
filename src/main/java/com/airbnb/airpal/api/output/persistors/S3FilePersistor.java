@@ -37,7 +37,7 @@ public class S3FilePersistor
 
     private String getOutputKey(String fileBaseName)
     {
-        return "presto/airpal/csv/" + fileBaseName;
+        return "presto/airpal/tmp/" + fileBaseName;
     }
 
     @Override

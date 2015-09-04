@@ -5,10 +5,8 @@ import com.airbnb.airpal.api.output.PersistentJobOutput;
 import com.airbnb.airpal.core.store.files.ExpiringFileStore;
 import com.amazonaws.services.s3.AmazonS3;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @AllArgsConstructor
-@Slf4j
 public class CSVPersistorFactory
 {
     private boolean useS3Persistor = false;
