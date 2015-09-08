@@ -60,6 +60,7 @@ public class S3FilePersistor
             return UriBuilder.fromPath("/api/s3/{filename}").build(file.getName());
         }
         catch (AmazonClientException e) {
+            log.error("Could not upload CSV to S3", e);
             throw new ExecutionClient.ExecutionFailureException(job, "Could not upload CSV to S3", e);
         }
         finally {
