@@ -40,6 +40,7 @@ import com.airbnb.airpal.sql.jdbi.URIArgumentFactory;
 import com.airbnb.airpal.sql.jdbi.UUIDArgumentFactory;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.auth.InstanceProfileCredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.regions.Region;
@@ -271,7 +272,7 @@ public class AirpalModule extends AbstractModule
         // This utilizes the amazon api to control token refresh and their libraries
         // to handle passing credentials around.
 
-        AmazonS3Client s3c = new AmazonS3Client(new InstanceProfileCredentialsProvider());
+        AmazonS3Client s3c = new AmazonS3Client(new DefaultAWSCredentialsProviderChain());
         s3c.setRegion(Region.getRegion(Regions.US_WEST_2));
         return s3c;
     }
