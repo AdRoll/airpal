@@ -41,7 +41,6 @@ import com.airbnb.airpal.sql.jdbi.UUIDArgumentFactory;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
-import com.amazonaws.auth.InstanceProfileCredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.s3.AmazonS3;
@@ -261,7 +260,7 @@ public class AirpalModule extends AbstractModule
     @Provides
     public AWSCredentials provideAWSCredentials()
     {
-        return new InstanceProfileCredentialsProvider().getCredentials();
+        return new DefaultAWSCredentialsProviderChain().getCredentials();
     }
 
     @Singleton
